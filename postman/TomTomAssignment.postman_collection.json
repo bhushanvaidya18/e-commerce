@@ -1,0 +1,1369 @@
+{
+	"info": {
+		"_postman_id": "a5c714a8-5f05-40d9-a93f-a3a105c1db6a",
+		"name": "TomTomAssignment",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Admin",
+			"item": [
+				{
+					"name": "Create Admin",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{admin_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"name\" : \"John Doe\",\n\t\"email\": \"john.doe@gmail.com\",\n\t\"password\": \"johndoe@123\"\n}"
+						},
+						"url": {
+							"raw": "{{server}}/admin",
+							"host": [
+								"{{server}}"
+							],
+							"path": [
+								"admin"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get all admins",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{admin_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{server}}/admin",
+							"host": [
+								"{{server}}"
+							],
+							"path": [
+								"admin"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get admin",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{admin_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"token\" : \"{{admin_token}}\"\n}"
+						},
+						"url": {
+							"raw": "{{server}}/admin/5e1ae93c6897ce38f84222ba",
+							"host": [
+								"{{server}}"
+							],
+							"path": [
+								"admin",
+								"5e1ae93c6897ce38f84222ba"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update admin",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{admin_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"name\" : \"John Doe\",\n\t\"email\": \"john.doe@gmail.com\",\n\t\"password\": \"johndoe@1234\"\n}"
+						},
+						"url": {
+							"raw": "{{server}}/admin/5e1b0a4c05e4c2400fa12830",
+							"host": [
+								"{{server}}"
+							],
+							"path": [
+								"admin",
+								"5e1b0a4c05e4c2400fa12830"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete admin",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{admin_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{server}}/admin/5e1b0a4c05e4c2400fa12830",
+							"host": [
+								"{{server}}"
+							],
+							"path": [
+								"admin",
+								"5e1b0a4c05e4c2400fa12830"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Admin Login",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "8cadce8f-60c1-432d-8542-faaa7adfdeec",
+								"exec": [
+									"var data = JSON.parse(responseBody);",
+									"postman.setEnvironmentVariable(\"admin_token\", data.data.token);",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"email\": \"ask.bhushan.vaidya@gmail.com\",\n\t\"password\": \"bhushanvaidya@123\"\n}"
+						},
+						"url": {
+							"raw": "{{server}}/admin/login",
+							"host": [
+								"{{server}}"
+							],
+							"path": [
+								"admin",
+								"login"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Customer",
+			"item": [
+				{
+					"name": "Create Customer",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{admin_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"name\" : \"John Doe\",\n\t\"email\": \"john.doe@gmail.com\",\n\t\"password\": \"johndoe@123\"\n}"
+						},
+						"url": {
+							"raw": "{{server}}/customer",
+							"host": [
+								"{{server}}"
+							],
+							"path": [
+								"customer"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get all customers",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{admin_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{server}}/customer",
+							"host": [
+								"{{server}}"
+							],
+							"path": [
+								"customer"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get customer",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{admin_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{server}}/customer/5e1ae93c6897ce38f84222ba",
+							"host": [
+								"{{server}}"
+							],
+							"path": [
+								"customer",
+								"5e1ae93c6897ce38f84222ba"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update customer",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{admin_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"name\" : \"John Doe\",\n\t\"email\": \"john.doe@gmail.com\",\n\t\"password\": \"johndoe@1234\"\n}"
+						},
+						"url": {
+							"raw": "{{server}}/customer/5e1afc6d215c4283a598e0ad",
+							"host": [
+								"{{server}}"
+							],
+							"path": [
+								"customer",
+								"5e1afc6d215c4283a598e0ad"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete customer",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{admin_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"name\" : \"John Doe\",\n\t\"email\": \"john.doe@gmail.com\",\n\t\"password\": \"johndoe@1234\"\n}"
+						},
+						"url": {
+							"raw": "{{server}}/customer/5e1afc6d215c4283a598e0ad",
+							"host": [
+								"{{server}}"
+							],
+							"path": [
+								"customer",
+								"5e1afc6d215c4283a598e0ad"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Customer Login",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "8cadce8f-60c1-432d-8542-faaa7adfdeec",
+								"exec": [
+									"var data = JSON.parse(responseBody);",
+									"postman.setEnvironmentVariable(\"customer_token\", data.data.token);",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"email\": \"john.doe@gmail.com\",\n\t\"password\": \"johndoe@123\"\n}"
+						},
+						"url": {
+							"raw": "{{server}}/customer/login",
+							"host": [
+								"{{server}}"
+							],
+							"path": [
+								"customer",
+								"login"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Seller",
+			"item": [
+				{
+					"name": "Create Seller",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{admin_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"name\" : \"Seller\",\n\t\"email\": \"seller@gmail.com\",\n\t\"password\": \"seller@123\"\n}"
+						},
+						"url": {
+							"raw": "{{server}}/seller",
+							"host": [
+								"{{server}}"
+							],
+							"path": [
+								"seller"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get all seller",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{admin_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{server}}/seller",
+							"host": [
+								"{{server}}"
+							],
+							"path": [
+								"seller"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get seller",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{admin_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{server}}/seller/5e1b0e7d05e4c2400fa12831",
+							"host": [
+								"{{server}}"
+							],
+							"path": [
+								"seller",
+								"5e1b0e7d05e4c2400fa12831"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update seller",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{admin_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"name\" : \"Seller\",\n\t\"email\": \"seller@gmail.com\",\n\t\"password\": \"seller@1234\"\n}"
+						},
+						"url": {
+							"raw": "{{server}}/seller/5e1b0e7d05e4c2400fa12831",
+							"host": [
+								"{{server}}"
+							],
+							"path": [
+								"seller",
+								"5e1b0e7d05e4c2400fa12831"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete seller",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{admin_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"name\" : \"John Doe\",\n\t\"email\": \"john.doe@gmail.com\",\n\t\"password\": \"johndoe@1234\"\n}"
+						},
+						"url": {
+							"raw": "{{server}}/seller/5e1b0e7d05e4c2400fa12831",
+							"host": [
+								"{{server}}"
+							],
+							"path": [
+								"seller",
+								"5e1b0e7d05e4c2400fa12831"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Seller Login",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "8cadce8f-60c1-432d-8542-faaa7adfdeec",
+								"exec": [
+									"var data = JSON.parse(responseBody);",
+									"postman.setEnvironmentVariable(\"seller_token\", data.data.token);",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"email\": \"seller@gmail.com\",\n\t\"password\": \"seller@123\"\n}"
+						},
+						"url": {
+							"raw": "{{server}}/seller/login",
+							"host": [
+								"{{server}}"
+							],
+							"path": [
+								"seller",
+								"login"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Dispatcher",
+			"item": [
+				{
+					"name": "Create Dispatcher",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{admin_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"name\" : \"Dispatcher\",\n\t\"email\": \"dispatcher@gmail.com\",\n\t\"password\": \"dispatcher@123\"\n}"
+						},
+						"url": {
+							"raw": "{{server}}/dispatcher",
+							"host": [
+								"{{server}}"
+							],
+							"path": [
+								"dispatcher"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get all dispatcher",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{admin_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{server}}/dispatcher",
+							"host": [
+								"{{server}}"
+							],
+							"path": [
+								"dispatcher"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get dispatcher",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{admin_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{server}}/dispatcher/5e1b0f96825c33523396599c",
+							"host": [
+								"{{server}}"
+							],
+							"path": [
+								"dispatcher",
+								"5e1b0f96825c33523396599c"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update dispatcher",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{admin_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"name\" : \"Dispatcher\",\n\t\"email\": \"dispatcher@gmail.com\",\n\t\"password\": \"dispatcher@1234\"\n}"
+						},
+						"url": {
+							"raw": "{{server}}/dispatcher/5e1b0f96825c33523396599c",
+							"host": [
+								"{{server}}"
+							],
+							"path": [
+								"dispatcher",
+								"5e1b0f96825c33523396599c"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete dispatcher",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{admin_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"name\" : \"John Doe\",\n\t\"email\": \"john.doe@gmail.com\",\n\t\"password\": \"johndoe@1234\"\n}"
+						},
+						"url": {
+							"raw": "{{server}}/dispatcher/5e1b0f96825c33523396599c",
+							"host": [
+								"{{server}}"
+							],
+							"path": [
+								"dispatcher",
+								"5e1b0f96825c33523396599c"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Dispatcher Login",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "8cadce8f-60c1-432d-8542-faaa7adfdeec",
+								"exec": [
+									"var data = JSON.parse(responseBody);",
+									"postman.setEnvironmentVariable(\"dispatcher_token\", data.data.token);",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"email\": \"dispatcher@gmail.com\",\n\t\"password\": \"dispatcher@123\"\n}"
+						},
+						"url": {
+							"raw": "{{server}}/dispatcher/login",
+							"host": [
+								"{{server}}"
+							],
+							"path": [
+								"dispatcher",
+								"login"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Product",
+			"item": [
+				{
+					"name": "Create Product",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{seller_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"sku_id\": \"a1\",\n    \"name\": \"Pink Floyd Another Brick in the Wall\",\n    \"product_type\": {\n      \"product_type_code\": \"CD\"\n    },\n    \"brand\": \"Pink Floyd\",\n    \"colour\": \"NA\",\n    \"size\": \"230 MB\",\n    \"model\": \"moser baer\",\n    \"price\": 140,\n    \"quantity\": 120\n }"
+						},
+						"url": {
+							"raw": "{{server}}/product",
+							"host": [
+								"{{server}}"
+							],
+							"path": [
+								"product"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get all products",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{seller_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{server}}/product",
+							"host": [
+								"{{server}}"
+							],
+							"path": [
+								"product"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get product",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{seller_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{server}}/product/5e1b882b687dc70580d2cce1",
+							"host": [
+								"{{server}}"
+							],
+							"path": [
+								"product",
+								"5e1b882b687dc70580d2cce1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update product",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{seller_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"sku_id\": \"a1\",\n    \"name\": \"Pink Floyd Another Brick in the Wall\",\n    \"product_type\": {\n      \"product_type_code\": \"CD\"\n    },\n    \"brand\": \"Pink Floyd\",\n    \"colour\": \"NA\",\n    \"size\": \"230 MB\",\n    \"model\": \"moser baer\",\n    \"price\": 140,\n    \"quantity\": 150\n }"
+						},
+						"url": {
+							"raw": "{{server}}/product/5e1b882b687dc70580d2cce1",
+							"host": [
+								"{{server}}"
+							],
+							"path": [
+								"product",
+								"5e1b882b687dc70580d2cce1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete product",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{seller_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{server}}/product/5e1b882b687dc70580d2cce1",
+							"host": [
+								"{{server}}"
+							],
+							"path": [
+								"product",
+								"5e1b882b687dc70580d2cce1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Assignment APIs",
+			"item": [
+				{
+					"name": "See products in different way (Customer)",
+					"item": [
+						{
+							"name": "See product  by Brand",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{customer_token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "{{server}}/product/view/customer?brand=pink",
+									"host": [
+										"{{server}}"
+									],
+									"path": [
+										"product",
+										"view",
+										"customer"
+									],
+									"query": [
+										{
+											"key": "brand",
+											"value": "pink"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "See product  by name",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{customer_token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "{{server}}/product/view/customer?name=floyd",
+									"host": [
+										"{{server}}"
+									],
+									"path": [
+										"product",
+										"view",
+										"customer"
+									],
+									"query": [
+										{
+											"key": "name",
+											"value": "floyd"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "See product  by price range",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{customer_token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "{{server}}/product/view/customer?min_price=130&max_price=1000",
+									"host": [
+										"{{server}}"
+									],
+									"path": [
+										"product",
+										"view",
+										"customer"
+									],
+									"query": [
+										{
+											"key": "min_price",
+											"value": "130"
+										},
+										{
+											"key": "max_price",
+											"value": "1000"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "See product  by all conditions",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{customer_token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "{{server}}/product/view/customer?brand=pink&name=floyd&min_price=130&max_price=1000",
+									"host": [
+										"{{server}}"
+									],
+									"path": [
+										"product",
+										"view",
+										"customer"
+									],
+									"query": [
+										{
+											"key": "brand",
+											"value": "pink"
+										},
+										{
+											"key": "name",
+											"value": "floyd"
+										},
+										{
+											"key": "min_price",
+											"value": "130"
+										},
+										{
+											"key": "max_price",
+											"value": "1000"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "View Cart (Customer)",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{customer_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{server}}/cart",
+							"host": [
+								"{{server}}"
+							],
+							"path": [
+								"cart"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Post Product (Seller)",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{seller_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"sku_id\": \"a1\",\n    \"name\": \"Pink Floyd Another Brick in the Wall\",\n    \"product_type\": {\n      \"product_type_code\": \"CD\"\n    },\n    \"brand\": \"Pink Floyd\",\n    \"colour\": \"NA\",\n    \"size\": \"230 MB\",\n    \"model\": \"moser baer\",\n    \"price\": 140,\n    \"quantity\": 120\n }"
+						},
+						"url": {
+							"raw": "{{server}}/product",
+							"host": [
+								"{{server}}"
+							],
+							"path": [
+								"product"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
